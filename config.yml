@@ -1,0 +1,176 @@
+---
+name: default
+server: 
+  ip: localhost
+  port: 7890
+channels: 
+  - 
+    index: 0
+    pixels: 0
+    type: 
+    colorspace: 
+  - 
+    index: 1
+    pixels: 0
+    type: 
+    colorspace: 
+  - 
+    index: 2
+    pixels: 0
+    type: 
+    colorspace: 
+  - 
+    index: 3
+    pixels: 0
+    type: 
+    colorspace: 
+  - 
+    index: 4
+    pixels: 0
+    type: 
+    colorspace: 
+  - 
+    index: 5
+    pixels: 0
+    type: 
+    colorspace: 
+  - 
+    index: 6
+    pixels: 0
+    type: 
+    colorspace: 
+  - 
+    index: 7
+    pixels: 0
+    type: 
+    colorspace: 
+  - 
+    index: 8
+    pixels: 64
+    type: strip
+    colorspace: RGB
+  - 
+    index: 9
+    pixels: 55
+    type: strip
+    colorspace: RGB
+  - 
+    index: 10
+    pixels: 22
+    type: strip
+    colorspace: RGB
+  - 
+    index: 11
+    pixels: 37
+    type: strip
+    colorspace: RGB
+  - 
+    index: 12
+    pixels: 50
+    type: strand
+    colorspace: GRB  
+  - 
+    index: 13
+    pixels: 50
+    type: strand
+    colorspace: GRB 
+  - 
+    index: 14
+    pixels: 22
+    type: strand
+    colorspace: GRB
+letters:
+  -
+    index: 0
+    character: G
+    channels: []
+    width: 0
+    height: 0
+  - 
+    index: 1
+    character: L 
+    channels: 
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+    width: 115
+    height: 178
+    loops: 
+      -
+        -
+          channel: 8
+          pixel: 0
+        -
+          channel: 11
+          pixel: 36
+        -
+          channel: 10
+          pixel: 0
+        -
+          channel: 9
+          pixel: 54
+  - 
+    index: 2
+    character: A
+    channels: []
+    width: 0
+    height: 0
+  - 
+    index: 3
+    character: M 
+    channels: []
+    width: 0
+    height: 0
+  - 
+    index: 4
+    character: C 
+    channels: []
+    width: 0
+    height: 0
+  - 
+    index: 5
+    character: O 
+    channels: []
+    width: 0
+    height: 0
+  - 
+    index: 6
+    character: C 
+    channels: []
+    width: 0
+    height: 0
+  - 
+    index: 7
+    character: K 
+    channels: []
+    width: 0
+    height: 0
+  - 
+    index: 8
+    character: S 
+    channels: []
+    width: 8
+    height: 12
+pixels: 
+  - 
+    - 0
+    - 0
+    - 0
+    - 0
+  - 
+    - 0
+    - 1
+    - 2
+    - 2
+  - 
+    - 0
+    - 2
+    - 2
+    - 3
+# [channel,pixel,x,y]
+# pixel, relative to the channel
+# x,y relative to the letter
