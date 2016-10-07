@@ -79,6 +79,11 @@ channels:
     pixels: 22
     type: strand
     colorspace: GRB
+  - 
+    index: 15
+    pixels: 0
+    type: 
+    colorspace: 
 letters:
   -
     index: 0
