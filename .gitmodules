@@ -1,0 +1,3 @@
+[submodule "server/fadecandy"]
+	path = server/fadecandy
+	url = git@github.com:GlamCocks/fadecandy
