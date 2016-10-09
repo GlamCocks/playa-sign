@@ -7,15 +7,27 @@
     },
     "devices": [{
         "type": "fadecandy",
-        "serial": "EAIKEKZNVJOZSVYL"
+        "serial": "EAIKEKZNVJOZSVYL",
+        "map": [
+            [ 0, 0, 0, 512 ]
+        ]
     }, {
         "type": "fadecandy",
-        "serial": "IOEIRZPJEOHDFZSX"
+        "serial": "IOEIRZPJEOHDFZSX",
+        "map": [
+            [ 0, 512, 0, 512 ]
+        ]
     }, {
         "type": "fadecandy",
-        "serial": "OSWIDHBPXJMXEZMZ"
+        "serial": "OSWIDHBPXJMXEZMZ",
+        "map": [
+            [ 0, 1024, 0, 512 ]
+        ]
     }, {
         "type": "fadecandy",
-        "serial": "BJDNIGTPPXSDUPWD"
+        "serial": "BJDNIGTPPXSDUPWD",
+        "map": [
+            [ 0, 1536, 0, 512 ]
+        ]
     }]
 }
