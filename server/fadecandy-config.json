@@ -1,28 +1,21 @@
 {
-    "listen": ["localhost", 7890],
+    "listen": ["127.0.0.1", 7890],
     "verbose": true,
-    "color": 
-    {
+    "color": {
         "gamma": 2.5,
         "whitepoint": [1.0, 1.0, 1.0]
     },
-    "devices": 
-    [
-        {
-            "type": "fadecandy",
-            "serial": "EAIKEKZNVJOZSVYL"
-        }, 
-        {
-            "type": "fadecandy",
-            "serial": "IOEIRZPJEOHDFZSX"
-        }, 
-        {
-            "type": "fadecandy",
-            "serial": "OSWIDHBPXJMXEZMZ"
-        }, 
-        {
-            "type": "fadecandy",
-            "serial": "BJDNIGTPPXSDUPWD"
-        }, 
-    ]
+    "devices": [{
+        "type": "fadecandy",
+        "serial": "EAIKEKZNVJOZSVYL"
+    }, {
+        "type": "fadecandy",
+        "serial": "IOEIRZPJEOHDFZSX"
+    }, {
+        "type": "fadecandy",
+        "serial": "OSWIDHBPXJMXEZMZ"
+    }, {
+        "type": "fadecandy",
+        "serial": "BJDNIGTPPXSDUPWD"
+    }]
 }

@@ -12,5 +12,5 @@ console log
 
 script
 	su pi
-	/home/pi/playasign/bin/fcserver-rpi /etc/fcserver.json 
+	/home/pi/playa-sign/server/fadecandy/bin/fcserver-rpi /home/pi/playa-sign/server/fadecandy-config.json
 end script

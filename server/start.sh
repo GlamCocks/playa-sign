@@ -3,6 +3,6 @@
 set -e
 
 # Set absolute path
-cd "/home/pi/playasign"
+cd "/home/pi/playa-sign"
 
 python run.py 
