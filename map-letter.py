@@ -19,7 +19,7 @@ for channel in letter.channels:
 		continue
 
 	for pixel in channel.pixels:
-		pixel.color = [255, 0, 0]
+		pixel.color = [0, 0, 100]
 		server.push()
 
 		input_x = input("What is the X coordinate of this red pixel? ")
@@ -29,3 +29,4 @@ for channel in letter.channels:
 		print "Mapping... results:"
 		print str(pixels)
 		pixel.color = [0, 0, 0]
+		server.push()
