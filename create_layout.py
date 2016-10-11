@@ -11,6 +11,7 @@ def writePixel(x, y):
 	pixels.append({'point': [x, 0, y]})
 
 pixels = []
+channels_size = [{'width': 0, 'height': 0}] * 9 * 8
 
 last_channel = 0
 last_index = 0
@@ -18,11 +19,19 @@ last_index = 0
 with open('config.yml', 'r') as f:
     config = yaml.load(f)
 
+for letter in config['letters']:
+	width = letter['width']
+	height = letter['height']
+
+	for channel in letter['channels']:
+		channels_size[channel] = {'width': width, 'height': height}
+
 for pixel in config['pixels']:
 	channel = pixel[0]
 	index = pixel[1] 
-	x = pixel[2] * 3 - 2
-	y = pixel[3] * 6 - 4
+
+	x = pixel[2]
+	y = pixel[3] 
 
 	if channel - last_channel > 1:
 		for _ in itertools.repeat(None, (channel - last_channel) * 64):
