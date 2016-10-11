@@ -10,9 +10,9 @@ logger = logging.getLogger("playasign.structure.Channel")
 class Channel(object):
 
     def __init__(self, index, numberOfPixels, type, colorspace):
-        self.index 	 	= index
-        self.pixels 	= []
-        self.type 		= type
+        self.index      = index
+        self.pixels     = []
+        self.type       = type
         self.colorspace = colorspace
 
         for i in range(numberOfPixels):

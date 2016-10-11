@@ -16,6 +16,8 @@ class Server(object):
     def __init__(self, config_file):
         self.configure(config_file=config_file)
 
+        self.colorspace_correction = True
+
         logger.info("new server created: " + str(self))
 
     def configure(self, config_file):
@@ -64,7 +66,10 @@ class Server(object):
                 if i < len(channel.pixels):
                     color = channel.pixels[i].color 
 
-                pixels.append(color_utils.to_RGB(color, channel.colorspace))
+                if self.colorspace_correction == True:
+                    color = color_utils.to_RGB(color, channel.colorspace)
+
+                pixels.append(color)
 
         self.client.put_pixels(pixels, channel=0)
 
