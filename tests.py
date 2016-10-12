@@ -4,14 +4,19 @@ import time
 
 from lib import *
 
-server = Server(config_file="config.yml")
-server.colorspace_correction = False
+Server(config_file="config.yml")
+Server().colorspace_correction = False
 
-server.clean()
-server.push()
+Server().clean()
+Server().push()
 
-for loop in Loop.instances:
-	print str(loop)
+loop = Loop.instances[0]
+chasing_loop = ChasingLoop(loop=loop, fps=200)
+chasing_loop.start()
+
+# print str(Color['red'].value(colorspace='GRB'))
+# for loop in Loop.instances:
+# 	loop.lol(1)
 # for letter in server.letters:
 # 	for loop in letter.loops:
 # 		first_node = loop.nodes[0]
