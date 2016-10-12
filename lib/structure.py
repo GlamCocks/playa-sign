@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import logging
-import pixel
+import colorsys
 
 logger = logging.getLogger("playasign.structure")
 
@@ -14,6 +14,43 @@ class Singleton(type):
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
 
         return cls._instances[cls]
+
+
+class MetaColor(type):
+
+    def __getitem__(cls, color):
+        switcher = {
+            'white':  Color(0,0,100),
+            'black':  Color(0,0,0),
+            'red':    Color(0,100,100),
+            'green':  Color(120,100,100),
+            'blue':   Color(240,100,100),
+            'yellow': Color(60,100,100),
+            'cyan':   Color(180,100,100),
+            'pink':   Color(300,100,100),
+            'orange': Color(30,100,100),
+        }
+
+        return switcher.get(color, None)
+
+
+class Color(object):
+    __metaclass__ = MetaColor
+
+    def __init__(self, hue, saturation, value):
+        self.h = hue 
+        self.s = saturation
+        self.v = value 
+
+    def value(self, colorspace):
+        rgb = colorsys.hsv_to_rgb(self.h / 360.0, self.s / 100.0, self.v / 100.0)
+
+        if colorspace == 'RGB':
+            return [int(rgb[0] * 255), int(rgb[1] * 255), int(rgb[2] * 255)]
+        elif colorspace == 'GRB':
+            return [int(rgb[1] * 255), int(rgb[0] * 255), int(rgb[2] * 255)]
+        else:
+            return [self.h, self.s, self.v]
 
 
 class MetaLetter(type):
@@ -91,7 +128,7 @@ class Pixel(object):
     def __init__(self, channel, index):
         self.channel = channel
         self.index   = index
-        self.color   = [0,0,0]
+        self.color   = Color['black']
 
         logger.info("new pixel created: " + str(self))
 
@@ -102,7 +139,11 @@ class Pixel(object):
 class EmptyPixel(object):
     __metaclass__ = Singleton
 
-    color = [0,0,0]        
+    __color = Color['black']      
+
+    @property
+    def color(self):
+        return self.__color 
 
     def __repr__(self):
         return "empty pixel"

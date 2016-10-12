@@ -2,7 +2,6 @@
 
 import yaml
 import logging
-import color_utils
 import opc 
 
 from structure import *
@@ -10,6 +9,7 @@ from structure import *
 logger = logging.getLogger("playasign.server")
 
 class Server(object):
+    __metaclass__ = Singleton
 
     def __init__(self, config_file):
         self.configure(config_file=config_file)
@@ -56,7 +56,7 @@ class Server(object):
     def clean(self):
         for channel in Channel.instances:
             for pixel in channel.pixels:
-                pixel.color = [0,0,0]
+                pixel.color = Color['black']
 
         logger.info("pixels reset to black")
 
@@ -65,12 +65,12 @@ class Server(object):
         
         for channel in Channel.instances:
             for x in range(64):
-                color = channel[x].color
-
                 if self.colorspace_correction == True:
-                    color = color_utils.to_RGB(color, channel.colorspace)
+                    colorspace = channel.colorspace
+                else:
+                    colorspace = "RGB"
 
-                pixels.append(color)
+                pixels.append(channel[x].color.value(colorspace=colorspace))
 
         self.client.put_pixels(pixels, channel=0)
 
