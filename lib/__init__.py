@@ -2,11 +2,9 @@ import logging
 import logging.config
 import color_utils
 
-from channel import *
-from opc     import *
-from pixel	 import *
-from server  import *
-from letter  import *
+from structure import *
+from server    import Server
+
 
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger("playasign")

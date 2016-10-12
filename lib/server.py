@@ -1,15 +1,13 @@
 #!/usr/bin/env python
 
-from channel import *
-from letter import *
-from opc import *
-
 import yaml
 import logging
 import color_utils
+import opc 
 
-logger = logging.getLogger("playasign.structure.Server")
+from structure import *
 
+logger = logging.getLogger("playasign.server")
 
 class Server(object):
 
@@ -29,42 +27,45 @@ class Server(object):
         logger.info("loading configuration: " + config['name'])
 
         # OPC client
-        self.client = Client(str(config['server']['ip']) + ':' + str(config['server']['port']))
+        self.client = opc.Client(str(config['server']['ip']) + ':' + str(config['server']['port']))
 
         logger.info("connected to OPC client: " + str(self.client))
 
         # Channels
-        self.channels = []
-
         for channel in config['channels']:
-            new_channel = Channel(index=channel['index'], numberOfPixels=channel['pixels'], type=channel['type'], colorspace=channel['colorspace'])
-            self.channels.append(new_channel)
+            Channel(index=channel['index'], numberOfPixels=channel['pixels'], type=channel['type'], colorspace=channel['colorspace'])
 
         # Letters
-        self.letters = []
-
         for letter in config['letters']:
             new_letter = Letter(index=letter['index'], character=letter['character'], width=letter['width'], height=letter['height'])
 
-            for channel_index in letter['channels']:
-                for channel in self.channels:
-                    if channel.index != channel_index:
-                        continue 
+            for i in letter['channels']:
+                new_letter.channels.append(Channel[i])
+                logger.info("channel " + str(Channel[i]) + " added to letter " + str(new_letter))
 
-                    new_letter.channels.append(channel)
-                    logger.info("channel " + str(channel) + " added to letter " + str(new_letter))
+            # Loops 
+            for loop in letter['loops']:
+                new_loop = Loop()
 
-            self.letters.append(new_letter)
+                for node in loop:
+                    pixel = Channel[node['channel']][node['pixel']]
+                    new_loop.nodes.append(pixel)
+
+                new_letter.loops.append(new_loop)
+
+    def clean(self):
+        for channel in Channel.instances:
+            for pixel in channel.pixels:
+                pixel.color = [0,0,0]
+
+        logger.info("pixels reset to black")
 
     def push(self):
         pixels = []
         
-        for channel in self.channels:
-            for i in range(64):
-                color = [0,0,0]
-
-                if i < len(channel.pixels):
-                    color = channel.pixels[i].color 
+        for channel in Channel.instances:
+            for x in range(64):
+                color = channel[x].color
 
                 if self.colorspace_correction == True:
                     color = color_utils.to_RGB(color, channel.colorspace)
@@ -76,4 +77,4 @@ class Server(object):
         logger.info("pushing new frame")
 
     def __repr__(self):
-        return "server (" + str(len(self.channels)) + " channels)"
+        return "server (" + str(len(Channel.instances)) + " channels)"

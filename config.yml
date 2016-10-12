@@ -91,6 +91,7 @@ letters:
     channels: []
     width: 0
     height: 0
+    loops: []
   - 
     index: 1
     character: L 
@@ -124,42 +125,49 @@ letters:
     channels: []
     width: 0
     height: 0
+    loops: []
   - 
     index: 3
     character: M 
     channels: []
     width: 0
     height: 0
+    loops: []
   - 
     index: 4
     character: C 
     channels: []
     width: 0
     height: 0
+    loops: []
   - 
     index: 5
     character: O 
     channels: []
     width: 0
     height: 0
+    loops: []
   - 
     index: 6
     character: C 
     channels: []
     width: 0
     height: 0
+    loops: []
   - 
     index: 7
     character: K 
     channels: []
     width: 0
     height: 0
+    loops: []
   - 
     index: 8
     character: S 
     channels: []
     width: 8
     height: 12
+    loops: []
 pixels: 
   - 
     - 8

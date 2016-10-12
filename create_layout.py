@@ -16,6 +16,9 @@ channels_size = [{'width': 0, 'height': 0}] * 9 * 8
 last_channel = 0
 last_index = 0
 
+if os.path.isfile(filename):
+	os.remove(filename)
+
 with open('config.yml', 'r') as f:
     config = yaml.load(f)
 
