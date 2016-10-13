@@ -5,6 +5,7 @@ import logging
 import opc 
 
 from structure import *
+from configuration import *
 
 logger = logging.getLogger("playasign.server")
 
@@ -15,7 +16,6 @@ class Server(object):
         self.configure(config_file=config_file)
 
         self.colorspace_correction = True
-        self.brightness = 100
 
         logger.info("new server created: " + str(self))
 
@@ -71,7 +71,7 @@ class Server(object):
                 else:
                     colorspace = "RGB"
 
-                pixels.append(channel[x].color.raw(colorspace=colorspace, brightness=self.brightness))
+                pixels.append(channel[x].color.raw(colorspace=colorspace, brightness=Configuration.brightness))
 
         self.client.put_pixels(pixels, channel=0)
 
