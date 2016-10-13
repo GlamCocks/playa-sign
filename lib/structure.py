@@ -29,6 +29,7 @@ class MetaColor(type):
             'cyan':   Color(180,100,100),
             'pink':   Color(300,100,100),
             'orange': Color(30,100,100),
+            'purple': Color(270,100,100),
         }
 
         return switcher.get(color, None)

@@ -5,14 +5,11 @@ import time
 import copy
 from collections import deque
 
-from server import Server
-from structure import *
+from ..server import Server
+from ..structure import *
+from enums import *
 
-logger = logging.getLogger("playasign.animation")
-
-class Rotation:
-    Clockwise = 1
-    CounterClockwise = 2
+logger = logging.getLogger("playasign.animations")
 
 class ChasingLoop(object):
 
