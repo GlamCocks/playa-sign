@@ -4,18 +4,20 @@ import time
 
 from lib import *
 
+fps=60
+
 Server(config_file="config.yml")
 Server().colorspace_correction = False
+Server().brightness = 100
 
 Server().clean()
 Server().push()
 
-fps = 50
-
 loop = Loop.instances[0]
 
-animstack = AnimationStack()
-animstack.add(ChasingRainbowLoop(loop=loop))
+stack = AnimationStack()
+stack.add(StrobeLoop(loop=loop, color=Color['white'], flash=2), delay=0, duration=100)
+# animstack.add(ChasingRainbowLoop(loop=loop))
 # animstack.add(RainbowLoop(loop=loop, starting_color=Color['green']))
 # animstack.add(ChasingLoop(loop=loop, color=Color['red'], rotation=Rotation.Clockwise))
 # animstack.add(ChasingLoop(loop=loop, color=Color['green'], rotation=Rotation.Clockwise, delay=40))
@@ -25,6 +27,6 @@ animstack.add(ChasingRainbowLoop(loop=loop))
 # animstack.add(ChasingLoop(loop=loop, color=Color['pink'], rotation=Rotation.CounterClockwise, delay=80))
 
 while True:
-	animstack.render()
+	stack.render()
 	Server().push()
 	time.sleep(1.0/float(fps))

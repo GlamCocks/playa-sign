@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import logging
+import time 
 
 from ..structure import *
 from ..server import Server
@@ -8,10 +9,10 @@ from ..server import Server
 logger = logging.getLogger("playasign.animations")
 
 class Animation(object):
-    def __init__(self, animation, delay, duration, dismiss):
+    def __init__(self, animation, start, end, dismiss):
         self.animation = animation 
-        self.delay     = delay
-        self.duration  = duration 
+        self.start     = start
+        self.end       = end 
         self.dismiss   = dismiss
 
 class AnimationStack(object):
@@ -22,13 +23,17 @@ class AnimationStack(object):
         self.animated = True
         logger.info("new animation stack created: " + str(self))
 
-    def add(self, animation, delay=0, duration=-1, dismiss=False):
-        new_animation = Animation(animation=animation, delay=delay, duration=duration, dismiss=dismiss)
+    def add(self, animation, delay=0, duration=None, dismiss=False):
+        start = time.time() + delay
 
-        if delay == 0:
-            self.__current_animations.append(new_animation)
+        if duration == None:
+            end = time.time() + 1000000000000000
         else:
-            self.__delayed_animations.append(new_animation)
+            end = start + duration
+
+        print str(start) + "  - -  " + str(end)
+        
+        new_animation = Animation(animation=animation, start=start, end=end, dismiss=dismiss)
 
         logger.info("new animation added to the stack: " + str(animation))
 
@@ -39,21 +44,14 @@ class AnimationStack(object):
         for animation in self.__current_animations:
             animation.animation.render()
 
-            if animation.duration == -1:
-                continue
-
-            animation.duration -= 1
-
-            if animation.duration == 0:
+            if animation.end <= time.time():
                 self.__current_animations.remove(animation)
 
                 if animation.dismiss == True:
                     Server().clean()
 
         for animation in self.__delayed_animations:
-            animation.delay -= 1
-
-            if animation.delay == 0:
+            if animation.start <= time.time():
                 self.__current_animations.append(animation)
                 self.__delayed_animations.remove(animation)
 

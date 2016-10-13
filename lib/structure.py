@@ -75,8 +75,8 @@ class Color(object):
     s = property(get_s, set_s)
     v = property(get_v, set_v)
 
-    def raw(self, colorspace):
-        rgb = colorsys.hsv_to_rgb(self._h / 360.0, self._s / 100.0, self._v / 100.0)
+    def raw(self, colorspace, brightness):
+        rgb = colorsys.hsv_to_rgb(self._h / 360.0, self._s / 100.0, self._v / 100.0 * float(brightness) / 100.0)
 
         if colorspace == 'RGB':
             return [int(rgb[0] * 255), int(rgb[1] * 255), int(rgb[2] * 255)]

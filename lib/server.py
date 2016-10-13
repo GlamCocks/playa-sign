@@ -15,6 +15,7 @@ class Server(object):
         self.configure(config_file=config_file)
 
         self.colorspace_correction = True
+        self.brightness = 100
 
         logger.info("new server created: " + str(self))
 
@@ -70,7 +71,7 @@ class Server(object):
                 else:
                     colorspace = "RGB"
 
-                pixels.append(channel[x].color.raw(colorspace=colorspace))
+                pixels.append(channel[x].color.raw(colorspace=colorspace, brightness=self.brightness))
 
         self.client.put_pixels(pixels, channel=0)
 

@@ -3,7 +3,6 @@
 import logging
 import time
 import copy
-from collections import deque
 
 from ..structure import *
 
