@@ -20,11 +20,18 @@ class AnimationStack(object):
         self.__current_animations = []
         self.__queued_animations  = []
 
-        self.animated = True
+        self.hidden = False
 
         self._last_animation_end = None
 
         logger.info("new animation stack created: " + str(self))
+
+    def clear(self):
+        self.__current_animations = []
+        self.__queued_animations  = []
+        
+        Server().clean()
+        logger.info("animation stack cleared")
 
     def add(self, animation, delay=0, duration=None, dismiss=False):
         if self._last_animation_end == None:
@@ -44,7 +51,7 @@ class AnimationStack(object):
         logger.info("new animation added to the stack: " + str(animation))
 
     def render(self):
-        if self.animated == False:
+        if self.hidden == True:
             return 
 
         for animation in self.__current_animations:
