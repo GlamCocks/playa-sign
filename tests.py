@@ -14,12 +14,14 @@ Server().clean()
 Server().push()
 
 loop = Loop.instances[0]
+letter = Letter[1]
 
 stack = AnimationStack()
-stack.add(StrobeLoop(loop=loop, color=Color['white'], flash=2), delay=1, duration=1, dismiss=True)
+stack.add(StrobeLetter(letter=letter, color=Color['white'], flash=2), duration=0.8, dismiss=True)
+stack.add(StrobeLoop(loop=loop, color=Color['blue'], flash=2), duration=1, dismiss=True)
 stack.add(ChasingRainbowLoop(loop=loop), duration=8, dismiss=True)
 stack.add(StrobeLoop(loop=loop, color=Color['white'], flash=2), duration=2, dismiss=True)
-stack.add(RainbowLoop(loop=loop, starting_color=Color['red']), duration=10, dismiss=True)
+stack.add(RainbowLoop(loop=loop, starting_color=Color['blue']), duration=10, dismiss=True)
 stack.add(ChasingLoop(loop=loop, color=Color['red'], rotation=Rotation.Clockwise))
 stack.add(ChasingLoop(loop=loop, color=Color['cyan'], rotation=Rotation.CounterClockwise))
 stack.add(ChasingLoop(loop=loop, color=Color['green'], rotation=Rotation.Clockwise), delay=3)

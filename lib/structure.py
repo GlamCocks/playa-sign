@@ -95,6 +95,8 @@ class MetaLetter(type):
 
 
 class Letter(object):
+    __metaclass__ = MetaLetter
+
     instances = []
 
     def __init__(self, index, character, width, height):
