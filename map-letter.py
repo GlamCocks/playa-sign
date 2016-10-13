@@ -20,10 +20,10 @@ upper = (180, 255, 255)
 # Selecting camera (might need to change this)
 camera = cv2.VideoCapture(0)
 
-server = Server(config_file="config.yml")
+Server(config_file="config.yml")
 
 input_var = input("Which letter # do you want to work on? ")
-letter = server.letters[input_var]
+letter = Letter[input_var]
 
 print "Working on letter " + str(letter) 
 
@@ -33,10 +33,11 @@ for channel in letter.channels:
 	print "Loading " + str(channel) + "..."
 
 	for pixel in channel.pixels:
-		pixel.color = [0, 0, 0]
-		server.push()
-		pixel.color = [200, 0, 0]
-		server.push()
+		pixel.color = Color['black']
+		Server().push()
+		pixel.color = Color['red']
+		Server().push()
+
 		time.sleep(0.2)
 
 		(grabbed, frame) = camera.read()
@@ -66,8 +67,8 @@ for channel in letter.channels:
 		key = cv2.waitKey(1) & 0xFF
 
 		pixels.append([channel.index, pixel.index, round(relative_x, 3), round(relative_y, 3)])
-		pixel.color = [0, 0, 0]
-		server.push()
+		pixel.color = Color['black']
+		Server().push()
 
 print "Results:"
 print str(pixels)
