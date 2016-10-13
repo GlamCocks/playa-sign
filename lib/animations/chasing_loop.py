@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import logging
-import time
 import copy
 from collections import deque
 

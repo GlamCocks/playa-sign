@@ -7,17 +7,17 @@ from enums import *
 
 logger = logging.getLogger("playasign.animations")
 
-class RainbowLoop(object):
+class RainbowLetter(object):
 
-    def __init__(self, loop, starting_color):
-        self.loop  = loop 
-        self.color = starting_color
+    def __init__(self, letter, starting_color):
+        self.letter = letter 
+        self.color  = starting_color
 
     def render(self):
         self.color.h += 1
         self.renderPixels()
 
     def renderPixels(self):
-        for node in self.loop.nodes:
-            for pixel in node.channel.pixels:
+        for channel in self.letter.channels:
+            for pixel in channel.pixels:
                 pixel.color = self.color  
