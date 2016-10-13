@@ -39,19 +39,51 @@ class Color(object):
     __metaclass__ = MetaColor
 
     def __init__(self, hue, saturation, value):
-        self.h = hue 
-        self.s = saturation
-        self.v = value 
+        self._h = hue % 360
+        self._s = max(min(saturation, 100), 0)
+        self._v = max(min(value, 100), 0) 
 
-    def value(self, colorspace):
-        rgb = colorsys.hsv_to_rgb(self.h / 360.0, self.s / 100.0, self.v / 100.0)
+    def set_h(self, value):
+        self._h = value % 360
+
+    def get_h(self):
+        return self._h
+
+    def set_s(self, value):
+        if value > 100:
+            value = 100
+        elif value < 0:
+            value = 0
+
+        self._s = value 
+
+    def get_s(self):
+        return self._s
+
+    def set_v(self, value):
+        if value > 100:
+            value = 100
+        elif value < 0:
+            value = 0
+
+        self._v = value 
+
+    def get_v(self):
+        return self._v
+
+    h = property(get_h, set_h)
+    s = property(get_s, set_s)
+    v = property(get_v, set_v)
+
+    def raw(self, colorspace):
+        rgb = colorsys.hsv_to_rgb(self._h / 360.0, self._s / 100.0, self._v / 100.0)
 
         if colorspace == 'RGB':
             return [int(rgb[0] * 255), int(rgb[1] * 255), int(rgb[2] * 255)]
         elif colorspace == 'GRB':
             return [int(rgb[1] * 255), int(rgb[0] * 255), int(rgb[2] * 255)]
         else:
-            return [self.h, self.s, self.v]
+            return [self._h, self._s, self._v]
 
 
 class MetaLetter(type):

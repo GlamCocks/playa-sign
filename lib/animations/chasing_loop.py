@@ -5,7 +5,6 @@ import time
 import copy
 from collections import deque
 
-from ..server import Server
 from ..structure import *
 from enums import *
 
@@ -13,21 +12,16 @@ logger = logging.getLogger("playasign.animations")
 
 class ChasingLoop(object):
 
-    def __init__(self, loop, color, rotation, delay=0):
+    def __init__(self, loop, color, rotation):
         self.loop     = loop 
         self.color    = color
         self.rotation = rotation
         self.node     = 0
-        self.delay    = delay
 
         self.queue = deque(maxlen=4)
         self.queue.appendleft(self.loop.nodes[self.node])
 
     def render(self):
-        if self.delay > 0:
-            self.delay -= 1
-            return
-
         if self.rotation == Rotation.Clockwise:
             self.renderClockwise()
         else: 

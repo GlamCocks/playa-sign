@@ -70,7 +70,7 @@ class Server(object):
                 else:
                     colorspace = "RGB"
 
-                pixels.append(channel[x].color.value(colorspace=colorspace))
+                pixels.append(channel[x].color.raw(colorspace=colorspace))
 
         self.client.put_pixels(pixels, channel=0)
 
