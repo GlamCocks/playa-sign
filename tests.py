@@ -11,8 +11,18 @@ Server().clean()
 Server().push()
 
 loop = Loop.instances[0]
-chasing_loop = ChasingLoop(loop=loop, fps=200)
-chasing_loop.start()
+chasing_loop_clockwise = ChasingLoop(loop=loop, color=Color['red'], rotation=Rotation.Clockwise)
+chasing_loop_clockwise2 = ChasingLoop(loop=loop, color=Color['green'], rotation=Rotation.Clockwise, delay=30)
+chasing_loop_counterclockwise = ChasingLoop(loop=loop, color=Color['cyan'], rotation=Rotation.CounterClockwise)
+chasing_loop_counterclockwise2 = ChasingLoop(loop=loop, color=Color['yellow'], rotation=Rotation.CounterClockwise, delay=15)
+
+while True:
+	chasing_loop_clockwise.render()
+	chasing_loop_clockwise2.render()
+	chasing_loop_counterclockwise.render()
+	chasing_loop_counterclockwise2.render()
+	Server().push()
+	time.sleep(1.0/30.0)
 
 # print str(Color['red'].value(colorspace='GRB'))
 # for loop in Loop.instances:
