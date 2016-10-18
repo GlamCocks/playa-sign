@@ -9,3 +9,7 @@ class Direction:
 	Up = 2
 	Right = 3
 	Down = 4
+
+class ColorDimension:
+	White = 1
+	Colors = 2
