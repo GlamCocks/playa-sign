@@ -10,6 +10,6 @@ class Direction:
 	Right = 3
 	Down = 4
 
-class ColorDimension:
-	White = 1
-	Colors = 2
+class PaletteAnimation:
+	Contained = 1
+	Moving = 2

@@ -31,10 +31,14 @@ class Configuration(object):
 		self.thread = threading.Thread(target=self.server.serve_forever)
 		self.addHandlers()
 
+	def __exit__(self, exc_type, exc_value, traceback):
+		self.stop()
+
 	def start(self):
 		self.thread.start()
 
 	def stop(self):
+		self.server.close()
 		self.thread.stop()
 
 	def addHandlers(self):

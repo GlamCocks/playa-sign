@@ -2,6 +2,7 @@
 
 import logging
 import colorsys
+import random 
 
 logger = logging.getLogger("playasign.structure")
 
@@ -84,6 +85,36 @@ class Color(object):
             return [int(rgb[1] * 255), int(rgb[0] * 255), int(rgb[2] * 255)]
         else:
             return [self._h, self._s, self._v]
+
+
+class MetaColorPalette(type):
+
+    def __getitem__(cls, palette):
+        switcher = {
+            'rainbow': ColorPalette(name='Rainbow', hue_range=[0, 360], saturation_range=[60, 100], value_range=[60, 100]),
+            'white':   ColorPalette(name='White', hue_range=[0, 0], saturation_range=[0, 0], value_range=[0, 30]),
+            'red':     ColorPalette(name='Red', hue_range=[320, 360 + 20], saturation_range=[60, 100], value_range=[60, 100]),
+            'purple':  ColorPalette(name='Purple', hue_range=[270, 320], saturation_range=[60, 100], value_range=[60, 100]),
+            'blue':    ColorPalette(name='Blue', hue_range=[170, 270], saturation_range=[60, 100], value_range=[60, 100]),
+            'green':   ColorPalette(name='Green', hue_range=[60, 170], saturation_range=[60, 100], value_range=[60, 100]),
+            'yellow':  ColorPalette(name='Yellow', hue_range=[35, 60], saturation_range=[60, 100], value_range=[60, 100]),
+            'party':   ColorPalette(name='Party', hue_range=[170, 360 + 50], saturation_range=[60, 100], value_range=[60, 100]),
+        }
+
+        return switcher.get(palette, None)
+
+
+class ColorPalette(object):
+    __metaclass__ = MetaColorPalette
+
+    def __init__(self, name, hue_range, saturation_range, value_range):
+        self.name = name 
+        self.hue_range = hue_range
+        self.saturation_range = saturation_range
+        self.value_range = value_range
+
+    def randomColor(self):
+        return Color(random.randint(self.hue_range[0], self.hue_range[1]) % 360, random.randint(self.saturation_range[0], self.saturation_range[1]) % 360, random.randint(self.value_range[0], self.value_range[1]) % 360)
 
 
 class MetaLetter(type):
