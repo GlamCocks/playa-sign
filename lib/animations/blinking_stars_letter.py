@@ -11,7 +11,6 @@ logger = logging.getLogger("playasign.animations")
 class BlinkingStar(object):
 
     def __init__(self, pixel, palette):
-
         self.pixel = pixel 
         self.palette = palette
         self.pixel.color = palette.randomColor()

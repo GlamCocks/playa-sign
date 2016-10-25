@@ -6,6 +6,7 @@ from main                  import *
 from blinking_stars_letter import *
 from chasing_loop          import *
 from chasing_rainbow_loop  import *
+from moving_light_letter   import *
 from rainbow_letter        import *
 from rainbow_loop          import *
 from strobe_letter         import *

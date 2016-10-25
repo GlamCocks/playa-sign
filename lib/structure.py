@@ -112,9 +112,23 @@ class ColorPalette(object):
         self.hue_range = hue_range
         self.saturation_range = saturation_range
         self.value_range = value_range
+        self.i = 0
+        self.direction = +1
 
     def randomColor(self):
         return Color(random.randint(self.hue_range[0], self.hue_range[1]) % 360, random.randint(self.saturation_range[0], self.saturation_range[1]) % 360, random.randint(self.value_range[0], self.value_range[1]) % 360)
+
+    def nextColor(self):
+        self.i += self.direction
+
+        if self.i == self.hue_range[1] - self.hue_range[0]:
+            self.direction = -1
+        elif self.i == 0:
+            self.direction = +1
+
+        self.i %= self.hue_range[1] - self.hue_range[0]
+
+        return Color(self.i + self.hue_range[0], (self.saturation_range[0] + self.saturation_range[1]) / 2.0, (self.value_range[0] + self.value_range[1]) / 2.0)
 
 
 class MetaLetter(type):
