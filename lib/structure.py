@@ -195,6 +195,8 @@ class Pixel(object):
         self.channel = channel
         self.index   = index
         self.color   = Color['black']
+        self.x       = None
+        self.y       = None
 
         logger.info("new pixel created: " + str(self))
 

@@ -54,6 +54,12 @@ class Server(object):
 
                 new_letter.loops.append(new_loop)
 
+        # Pixels 
+        for pixel in config['pixels']:
+            p = Pixel[pixel[0] * 64 + pixel[1]]
+            p.x = pixel[2]
+            p.y = pixel[3]
+
     def clean(self):
         for channel in Channel.instances:
             for pixel in channel.pixels:
@@ -74,8 +80,6 @@ class Server(object):
                 pixels.append(channel[x].color.raw(colorspace=colorspace, brightness=Configuration.brightness))
 
         self.client.put_pixels(pixels, channel=0)
-
-        logger.info("pushing new frame")
 
     def __repr__(self):
         return "server (" + str(len(Channel.instances)) + " channels)"
