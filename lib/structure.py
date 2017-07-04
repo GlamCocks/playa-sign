@@ -201,12 +201,16 @@ class MetaPixel(type):
 class Pixel(object):
     __metaclass__ = MetaPixel
 
+    instances = []
+
     def __init__(self, channel, index):
         self.channel = channel
         self.index   = index
         self.color   = Color['black']
         self.x       = None
         self.y       = None
+
+        Pixel.instances.append(self)
 
         logger.info("new pixel created: " + str(self))
 

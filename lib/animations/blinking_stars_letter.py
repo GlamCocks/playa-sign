@@ -19,7 +19,7 @@ class BlinkingStar(object):
         self.move = -0.5 if math.fabs(random_move < 0.5) else random_move
 
     def next(self, speed=1, delta_hue=0):
-        if self.pixel.color.v == 0 and random.randint(0,100) == 0:
+        if self.pixel.color.v == 0 and random.randint(0,1) == 0:
             self.move = random.uniform(0.5, 5)
             self.pixel.color = self.palette.randomColor()
             self.pixel.color.v = 0
