@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 <head>
 	<title></title>
 </head>
-<body>
+<body style="background-color:gray;">
 <?php 
 
 $letter = $_GET['letter'];
@@ -81,9 +81,11 @@ for ($i = 0; $i < $nbr_circles; $i++) {
 
 $c = 0;
 
+$real_indexes = array();
+
 foreach ($lines as $line) {
 	$items = explode(' ', $line);
-	array_shift($items);
+	$real_indexes[] = intval(array_shift($items));
 
 	foreach ($items as $k => $item) {
 		$pixel = $pixels[$item];
@@ -95,7 +97,7 @@ foreach ($lines as $line) {
 }
 
 ?>
-<div id="letter" style="width:<?php echo $w; ?>px; height:<?php echo $h; ?>px; background-color:gray; float: left;">
+<div id="letter" style="width:<?php echo $w; ?>px; height:<?php echo $h; ?>px; float: left;">
 	<?php 
 	foreach ($pixels as $pixel) {
 		?><div class="pixel" style="width:16px; height:16px; background-color:<?php echo $pixel->color; ?>; position: absolute; left:<?php echo $pixel->rx * $w; ?>px; top:<?php echo $pixel->ry * $h; ?>px; border-radius: 8px; text-align: center; font-size: 10pt; color: <?php echo $pixel->t_color; ?>"><b><?php echo $pixel->i; ?></b></div><?php
@@ -105,7 +107,7 @@ foreach ($lines as $line) {
 <div>
 	<?php 
 		foreach ($channels as $k => $channel) {
-			echo $k .': '. $channel . ' <br />';
+			echo '<div class="channel" style="display:inline-block; text-align:center; width:16px; height:16px; background-color:'. $colors[$k] .'; border-radius: 8px; color: '. $t_colors[$k] .';"><b>'. $real_indexes[$k] .'</b></div> '. $channel . ' pixels<br />';
 		}
 	?>
 </div>
