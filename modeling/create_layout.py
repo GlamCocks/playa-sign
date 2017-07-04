@@ -26,7 +26,7 @@ for pixel in config['pixels']:
 	if x == 0 and y == 0: 
 		writePixel(1000, 1000)
 	else:
-		writePixel(x * 8.9252, y * 3.27)
+		writePixel(x * 8.9252 - 8.9252/2 , y * 3.27 - 3.27/2)
 
 with open(filename, 'w') as outfile:
     json.dump(pixels, outfile)
