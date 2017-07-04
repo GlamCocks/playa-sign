@@ -34,31 +34,21 @@ class Server(object):
 
         # Channels
         for channel in config['channels']:
-            Channel(index=channel['index'], numberOfPixels=channel['pixels'], type=channel['type'], colorspace=channel['colorspace'])
+            Channel(index=channel['index'], numberOfPixels=channel['pixels'], colorspace=channel['colorspace'])
 
         # Letters
         for letter in config['letters']:
-            new_letter = Letter(index=letter['index'], character=letter['character'], width=letter['width'], height=letter['height'])
+            new_letter = Letter(index=letter['index'], character=letter['character'])
 
             for i in letter['channels']:
                 new_letter.channels.append(Channel[i])
-                logger.info("channel " + str(Channel[i]) + " added to letter " + str(new_letter))
-
-            # Loops 
-            for loop in letter['loops']:
-                new_loop = Loop()
-
-                for node in loop:
-                    pixel = Channel[node['channel']][node['pixel']]
-                    new_loop.nodes.append(pixel)
-
-                new_letter.loops.append(new_loop)
+                logger.info(str(Channel[i]) + " added to " + str(new_letter))
 
         # Pixels 
         for pixel in config['pixels']:
-            p = Pixel[pixel[0] * 64 + pixel[1]]
-            p.x = pixel[2]
-            p.y = pixel[3]
+            p = Pixel[pixel['i']]
+            p.x = pixel['x']
+            p.y = pixel['y']
 
     def clean(self):
         for channel in Channel.instances:

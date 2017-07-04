@@ -7,10 +7,10 @@ from lib import *
 
 fps = 100
 
-opc_server = '10.0.1.5', 7000
-opc_client = '10.0.1.20', 9000
+# opc_server = '10.0.1.5', 7000
+# opc_client = '10.0.1.20', 9000
 
-Configuration(server=opc_server, client=opc_client).start()
+# Configuration(server=opc_server, client=opc_client).start()
 
 Server(config_file="config.yml")
 Server().colorspace_correction = True
@@ -18,12 +18,10 @@ Server().colorspace_correction = True
 Server().clean()
 Server().push()
 
-loop = Loop.instances[0]
 letter = Letter[1]
 
-
 stack = AnimationStack()
-stack.add(BlinkingStarsLetter(letter=letter, palette=ColorPalette(name='shifting palette', hue_range=[200, 220], saturation_range=[60, 100], value_range=[60, 100]), speed=1), duration=30*60)
+# stack.add(BlinkingStarsLetter(letter=letter, palette=ColorPalette(name='shifting palette', hue_range=[200, 220], saturation_range=[60, 100], value_range=[60, 100]), speed=1), duration=30*60)
 # stack.add(RainbowLetter(letter=letter, starting_color=Color['red']), dismiss=True)
 # stack.add(RainbowLoop(loop=loop, starting_color=Color['orange']), duration=5, dismiss=True)
 # stack.add(ChasingRainbowLoop(loop=loop), duration=10, dismiss=True)

@@ -144,13 +144,10 @@ class Letter(object):
 
     instances = []
 
-    def __init__(self, index, character, width, height):
+    def __init__(self, index, character):
         self.index     = index
         self.character = character
         self.channels  = []
-        self.loops     = []
-        self.width     = 0
-        self.height    = 0
 
         Letter.instances.append(self)
 
@@ -171,10 +168,9 @@ class Channel(object):
 
     instances = []
 
-    def __init__(self, index, numberOfPixels, type, colorspace):
+    def __init__(self, index, numberOfPixels, colorspace):
         self.index      = index
         self.pixels     = []
-        self.type       = type
         self.colorspace = colorspace
 
         for i in range(numberOfPixels):
@@ -191,7 +187,7 @@ class Channel(object):
             return EmptyPixel()
 
     def __repr__(self):
-        return "channel #" + str(self.index) + " (" + str(self.type) + " - " + str(len(self.pixels)) + " pixels - " + str(self.colorspace) +")"
+        return "channel #" + str(self.index) + " (" + str(self.colorspace) + " - " + str(len(self.pixels)) + " pixels)"
 
 
 class MetaPixel(type):
@@ -229,25 +225,3 @@ class EmptyPixel(object):
 
     def __repr__(self):
         return "empty pixel"
-
-
-class MetaLoop(type):
-
-    def __getitem__(cls, index):
-        return Loop.instances[index]
-
-
-class Loop(object):
-    __metaclass__ = MetaLoop
-
-    instances = []
-
-    def __init__(self):
-        self.nodes = []
-        
-        Loop.instances.append(self)
-
-        logger.info("new loop created: " + str(self))
-
-    def __repr__(self):
-        return "loop with nodes: " + str(self.nodes) 
