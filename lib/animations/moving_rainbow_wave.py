@@ -16,6 +16,10 @@ class MovingRainbowWave(object):
         self.clock = 0.0
         self.scale = scale
 
+        for pixel in Pixel.instances:
+            if pixel.x != None and pixel.y != None:
+                pixel.color = Color['white']
+
     def render(self):
         self.clock += self.speed / (self.scale * 360)
 
@@ -27,5 +31,4 @@ class MovingRainbowWave(object):
     def renderPixels(self):
         for pixel in Pixel.instances:
             if pixel.x != None and pixel.y != None:
-                pixel.color = copy.deepcopy(Color['white'])
                 pixel.color.h = (self.clock + pixel.x + pixel.y * 0.3) * (self.scale * 360)

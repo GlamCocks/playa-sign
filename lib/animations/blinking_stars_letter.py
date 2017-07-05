@@ -29,7 +29,6 @@ class BlinkingStar(object):
 
         self.pixel.color.v += self.move
 
-
 class BlinkingStarsLetter(object):
 
     def __init__(self, letter, palette, speed=1):
