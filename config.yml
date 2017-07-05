@@ -154,16 +154,16 @@ channels:
     colorspace: GRB
   - 
     index: 37
-    pixels: 64
-    colorspace: GRB
+    pixels: 0
+    colorspace: 
   - 
     index: 38
-    pixels: 64
-    colorspace: GRB
+    pixels: 0
+    colorspace: 
   - 
     index: 39
-    pixels: 36
-    colorspace: GRB
+    pixels: 
+    colorspace: 
   - 
     index: 40
     pixels: 64
@@ -174,20 +174,20 @@ channels:
     colorspace: GRB
   - 
     index: 42
-    pixels: 10
+    pixels: 36
     colorspace: GRB
   - 
     index: 43
-    pixels: 0
-    colorspace: 
+    pixels: 64
+    colorspace: GRB
   - 
     index: 44
-    pixels: 0
-    colorspace: 
+    pixels: 64
+    colorspace: GRB
   - 
     index: 45
-    pixels: 0
-    colorspace: 
+    pixels: 10
+    colorspace: GRB
   - 
     index: 46
     pixels: 0
@@ -242,13 +242,13 @@ letters:
   - 
     index: 7
     character: K 
-    channels: [37, 38, 39]
+    channels: [40, 41, 42]
     left: 0
     top: 0
   - 
     index: 8
     character: S 
-    channels: [40, 41, 42]
+    channels: [43, 44, 45]
     left: 0
     top: 0
 pixels: 
