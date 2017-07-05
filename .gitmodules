@@ -1,6 +1,6 @@
 [submodule "server/fadecandy"]
 	path = server/fadecandy
-	url = git@github.com:GlamCocks/fadecandy
+	url = git@github.com:scanlime/fadecandy
 [submodule "server/openpixelcontrol"]
 	path = server/openpixelcontrol
 	url = https://github.com/zestyping/openpixelcontrol
