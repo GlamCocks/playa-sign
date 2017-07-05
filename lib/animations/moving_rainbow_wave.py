@@ -11,30 +11,21 @@ logger = logging.getLogger("playasign.animations")
 
 class MovingRainbowWave(object):
 
-    def __init__(self, speed=1):
+    def __init__(self, scale=1, speed=1):
         self.speed = speed
-
-        self.y = self.x = self.start = 0
-        self.end = 1.0
+        self.clock = 0.0
+        self.scale = scale
 
     def render(self):
-        self.x += 0.001
-        self.y += self.speed / 100.0
+        self.clock += self.speed / (self.scale * 360)
 
-        if self.x > self.end:
-            self.x = self.start
-
-        if self.y > self.end:
-            self.y = self.start
+        if self.clock >= 1.0 / self.scale:
+            self.clock = 0.0
 
         self.renderPixels()
 
     def renderPixels(self):
         for pixel in Pixel.instances:
             if pixel.x != None and pixel.y != None:
-                diff_x = self.x * 360
                 pixel.color = copy.deepcopy(Color['white'])
-                pixel.color.h = 40
-                # diff_y = 1.0 / (math.cosh(pixel.y - self.y)**200)
-                # pixel.color = copy.deepcopy(color)
-                # pixel.color.v = diff_x * 100
+                pixel.color.h = (self.clock + pixel.x + pixel.y * 0.3) * (self.scale * 360)

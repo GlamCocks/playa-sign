@@ -21,7 +21,7 @@ class MetaColor(type):
 
     def __getitem__(cls, color):
         switcher = {
-            'white':  Color(0,0,100),
+            'white':  Color(0,100,100),
             'black':  Color(0,0,0),
             'red':    Color(0,100,100),
             'green':  Color(120,100,100),

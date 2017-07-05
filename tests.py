@@ -23,15 +23,15 @@ letter = Letter[1]
 stack = AnimationStack()
 
 # Rainbow blinking stars
-stack.add(BlinkingStarsLetter(letter=Letter[0], palette=ColorPalette(name='shifting palette', hue_range=[0, 40], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
-stack.add(BlinkingStarsLetter(letter=Letter[1], palette=ColorPalette(name='shifting palette', hue_range=[40, 80], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
-stack.add(BlinkingStarsLetter(letter=Letter[2], palette=ColorPalette(name='shifting palette', hue_range=[80, 120], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
-stack.add(BlinkingStarsLetter(letter=Letter[3], palette=ColorPalette(name='shifting palette', hue_range=[120, 160], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
-stack.add(BlinkingStarsLetter(letter=Letter[4], palette=ColorPalette(name='shifting palette', hue_range=[160, 200], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
-stack.add(BlinkingStarsLetter(letter=Letter[5], palette=ColorPalette(name='shifting palette', hue_range=[200, 240], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
-stack.add(BlinkingStarsLetter(letter=Letter[6], palette=ColorPalette(name='shifting palette', hue_range=[240, 280], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
-stack.add(BlinkingStarsLetter(letter=Letter[7], palette=ColorPalette(name='shifting palette', hue_range=[280, 320], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
-stack.add(BlinkingStarsLetter(letter=Letter[8], palette=ColorPalette(name='shifting palette', hue_range=[320, 360], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
+# stack.add(BlinkingStarsLetter(letter=Letter[0], palette=ColorPalette(name='shifting palette', hue_range=[0, 40], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
+# stack.add(BlinkingStarsLetter(letter=Letter[1], palette=ColorPalette(name='shifting palette', hue_range=[40, 80], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
+# stack.add(BlinkingStarsLetter(letter=Letter[2], palette=ColorPalette(name='shifting palette', hue_range=[80, 120], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
+# stack.add(BlinkingStarsLetter(letter=Letter[3], palette=ColorPalette(name='shifting palette', hue_range=[120, 160], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
+# stack.add(BlinkingStarsLetter(letter=Letter[4], palette=ColorPalette(name='shifting palette', hue_range=[160, 200], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
+# stack.add(BlinkingStarsLetter(letter=Letter[5], palette=ColorPalette(name='shifting palette', hue_range=[200, 240], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
+# stack.add(BlinkingStarsLetter(letter=Letter[6], palette=ColorPalette(name='shifting palette', hue_range=[240, 280], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
+# stack.add(BlinkingStarsLetter(letter=Letter[7], palette=ColorPalette(name='shifting palette', hue_range=[280, 320], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
+# stack.add(BlinkingStarsLetter(letter=Letter[8], palette=ColorPalette(name='shifting palette', hue_range=[320, 360], saturation_range=[60, 100], value_range=[60, 100]), speed=1))
 
 # Rainbow (letters)
 # stack.add(RainbowLetter(letter=Letter[0], starting_color=Color(0,100,100)))
@@ -55,7 +55,7 @@ stack.add(BlinkingStarsLetter(letter=Letter[8], palette=ColorPalette(name='shift
 # stack.add(StrobeLetter(letter=Letter[7], color=Color['red'], flash=2))
 # stack.add(StrobeLetter(letter=Letter[8], color=Color['red'], flash=2))
 
-# stack.add(MovingRainbowWave(speed=5))
+stack.add(MovingRainbowWave(scale=0.2, speed=3))
 
 while True:
         stack.render()
