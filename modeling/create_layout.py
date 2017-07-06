@@ -23,7 +23,7 @@ for pixel in config['pixels']:
 	x = pixel['x']
 	y = pixel['y'] 
 
-	if x == 0 and y == 0: 
+	if x == None and y == None: 
 		writePixel(1000, 1000)
 	else:
 		writePixel(x * 8.9252 - 8.9252/2 , y * 3.27 - 3.27/2)
