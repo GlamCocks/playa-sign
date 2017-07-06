@@ -96,8 +96,8 @@ foreach ($all_pixels as $pixel) {
 	while ($pixel->i > $last + 1) {
 	$output_pixels[] = '  -
     i: '. ($last+1) .'
-    x: 0.0
-    y: 0.0
+    x: 
+    y: 
 ';
 		$last++;
 	}
