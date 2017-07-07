@@ -15,14 +15,13 @@ from structure import Singleton
 
 # Brightness
 def brightness_handler(add, tags, args, source):
-	print "brightness" + str(args) 
 	Configuration.brightness = args[0] * 100
 
 
 class Configuration(object):
 	__metaclass__ = Singleton
 
-	brightness = 100
+	brightness = 100.0
 
 	def __init__(self, server, client):
 		self.server = OSC.OSCServer(server)
@@ -42,4 +41,4 @@ class Configuration(object):
 		self.thread.stop()
 
 	def addHandlers(self):
-		self.server.addMsgHandler("1/fader1", brightness_handler)
+		self.server.addMsgHandler("general/brightness", brightness_handler)
