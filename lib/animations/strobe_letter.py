@@ -3,29 +3,33 @@
 import logging
 
 from ..structure import *
-from enums import *
+from ..configuration import *
 
 logger = logging.getLogger("playasign.animations")
 
 class StrobeLetter(object):
 
-    def __init__(self, letter, color, flash=1):
+    def __init__(self, letter):
         self.letter = letter 
-        self.color  = color
-        self.flash  = flash
-
         self._clock = 0
 
     def render(self):
         self._clock += 1
-        self._clock %= self.flash + 1
+        self._clock %= 2
 
         self.renderPixels()
 
     def renderPixels(self):
+        color = Color['black']
+
+        logger.info(str(Configuration.strobe_color.raw('RGB', 1.0)))
+
+        if Configuration.strobe_color != None:
+            color = Configuration.strobe_color 
+
         for channel in self.letter.channels:
             for pixel in channel.pixels:
                 if self._clock == 0:
-                    pixel.color = self.color  
+                    pixel.color = color
                 else:
                     pixel.color = Color['black']

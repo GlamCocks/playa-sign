@@ -21,7 +21,7 @@ class MetaColor(type):
 
     def __getitem__(cls, color):
         switcher = {
-            'white':  Color(0,100,100),
+            'white':  Color(0,0,100),
             'black':  Color(0,0,0),
             'red':    Color(0,100,100),
             'green':  Color(120,100,100),
@@ -31,6 +31,7 @@ class MetaColor(type):
             'pink':   Color(300,100,100),
             'orange': Color(30,100,100),
             'purple': Color(270,100,100),
+            'brown':  Color(15, 100, 100),
         }
 
         return switcher.get(color, None)
@@ -77,7 +78,7 @@ class Color(object):
     v = property(get_v, set_v)
 
     def raw(self, colorspace, brightness):
-        rgb = colorsys.hsv_to_rgb(self._h / 360.0, self._s / 100.0, self._v / 100.0 * float(brightness) / 100.0)
+        rgb = colorsys.hsv_to_rgb(self._h / 360.0, self._s / 100.0, self._v / 100.0 * float(brightness))
 
         if colorspace == 'RGB':
             return [int(rgb[0] * 255), int(rgb[1] * 255), int(rgb[2] * 255)]
