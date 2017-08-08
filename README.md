@@ -35,3 +35,6 @@ You should see something similar to the preview below.
 * [Letter K](https://github.com/GlamCocks/playa-sign/blob/master/resources/mapping/K.pdf?raw=true)
 * [Letter S](https://github.com/GlamCocks/playa-sign/blob/master/resources/mapping/S.pdf?raw=true)
 
+## Other resources 
+
+* [Build Manual](https://github.com/GlamCocks/playa-sign/blob/master/resources/build/Build%20Manual.pdf?raw=true)
