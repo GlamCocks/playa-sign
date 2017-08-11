@@ -3,6 +3,7 @@
 import yaml
 import logging
 import opc 
+import math
 
 from structure import *
 from configuration import *
@@ -46,9 +47,23 @@ class Server(object):
 
         # Pixels 
         for pixel in config['pixels']:
+            letter_index = pixel['l'] 
+
+            if letter_index == None:
+                p = Pixel[pixel['i']]
+                continue
+
+            letter = config['letters'][letter_index]
             p = Pixel[pixel['i']]
-            p.x = pixel['x']
-            p.y = pixel['y']
+
+            angle = letter['angle'] * 0.0174533
+            relative_x = pixel['x'] * math.cos(angle) - pixel['y'] * math.sin(angle)
+            relative_y = pixel['y'] * math.cos(angle) + pixel['x'] * math.sin(angle)
+            absolute_x = letter['left'] + relative_x * letter['width']
+            absolute_y = letter['top'] - relative_y * letter['height']
+
+            p.x = absolute_x
+            p.y = absolute_y
 
     def clean(self):
         for channel in Channel.instances:
