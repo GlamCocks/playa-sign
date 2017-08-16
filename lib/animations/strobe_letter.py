@@ -15,14 +15,12 @@ class StrobeLetter(object):
 
     def render(self):
         self._clock += 1
-        self._clock %= 2
+        self._clock %= 5
 
         self.renderPixels()
 
     def renderPixels(self):
         color = Color['black']
-
-        logger.info(str(Configuration.strobe_color.raw('RGB', 1.0)))
 
         if Configuration.strobe_color != None:
             color = Configuration.strobe_color 
