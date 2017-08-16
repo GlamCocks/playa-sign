@@ -12,6 +12,16 @@ class StrobeLetter(object):
     def __init__(self, letter):
         self.letter = letter 
         self._clock = 0
+        self._offColor = Color['black']
+
+        if Configuration.strobe_color != None:
+            self._onColor = Configuration.strobe_color 
+        else: 
+            self._onColor = Color['black']
+
+        for channel in self.letter.channels:
+            for pixel in channel.pixels:
+                pixel.color = self._offColor
 
     def render(self):
         self._clock += 1
@@ -20,14 +30,9 @@ class StrobeLetter(object):
         self.renderPixels()
 
     def renderPixels(self):
-        color = Color['black']
-
-        if Configuration.strobe_color != None:
-            color = Configuration.strobe_color 
-
         for channel in self.letter.channels:
             for pixel in channel.pixels:
                 if self._clock == 0:
                     pixel.color = color
                 else:
-                    pixel.color = Color['black']
+                    pixel.color = self._offColor
