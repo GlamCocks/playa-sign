@@ -16,7 +16,7 @@ config_server = Configuration(server=opc_server, client=opc_client)
 config_server.start()
 
 Server(config_file="config.yml")
-Server().colorspace_correction = False
+Server().colorspace_correction = True
 
 Server().clean()
 Server().push()

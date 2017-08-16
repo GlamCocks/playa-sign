@@ -25,7 +25,7 @@ class MovingStar(object):
 
         for pixel in Pixel.instances:
             if pixel.x != None and pixel.y != None:
-                if math.fabs(pixel.x - position[0]) < 0.01 and math.fabs(pixel.y - position[1]) < 0.03:
-                    pixel.color = Color['red']
-                else: 
-                    pixel.color = Color['black']
+                d = math.sqrt(math.pow(pixel.x - position[0], 2) + math.pow(pixel.y - position[1], 2))
+                print(str(d))
+                # print(str(math.pow(1-d, 100)))
+                pixel.color = Color(0, 100, math.pow(d, 50))
