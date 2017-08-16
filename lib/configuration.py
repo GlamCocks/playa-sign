@@ -23,9 +23,9 @@ class Configuration(object):
 
 	brightness = 0.5 # [0...1]
 	speed = 0.5 # [0...1]
-	animation = None
+	animation = AnimationType.RainbowWave
 
-	rainbow_wave_scale = 0.2 # [0...1]
+	rainbow_wave_scale = 0.7 # [0...1]
 	strobe_color = Color['white']
 	moving_star_position = [0.0, 0.0] # [x: [0...1], y: [0...1]]
 

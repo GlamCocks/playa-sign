@@ -9,7 +9,7 @@ from lib import *
 
 fps = 30
 
-opc_server = '10.0.1.31', 7000
+opc_server = '10.0.1.90', 7000
 opc_client = '10.0.1.20', 9000
 
 config_server = Configuration(server=opc_server, client=opc_client)
