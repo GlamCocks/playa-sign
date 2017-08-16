@@ -33,6 +33,6 @@ class StrobeLetter(object):
         for channel in self.letter.channels:
             for pixel in channel.pixels:
                 if self._clock == 0:
-                    pixel.color = color
+                    pixel.color = self._onColor
                 else:
                     pixel.color = self._offColor
