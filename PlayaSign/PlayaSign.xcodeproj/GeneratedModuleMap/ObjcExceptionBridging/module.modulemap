@@ -1,0 +1,4 @@
+module ObjcExceptionBridging {
+    umbrella header "/Users/sebastianthiebaud/Repositories/playa-sign/PlayaSign/.build/checkouts/XCGLogger.git--3429210985630446832/Sources/ObjcExceptionBridging/include/ObjcExceptionBridging.h"
+    export *
+}
