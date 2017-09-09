@@ -70,8 +70,6 @@ class Server(object):
             for pixel in channel.pixels:
                 pixel.color = Color['black']
 
-        logger.info("pixels reset to black")
-
     def push(self):
         pixels = []
         
